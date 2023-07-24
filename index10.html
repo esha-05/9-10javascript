@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 10</title>
+</head>
+<body>
+    <script>
+        function bandNamesSort(bandNames) {
+            const articles = ["The", "A", "An"];
+          
+            // Helper function to extract the initial article from a band name
+            function extractArticle(name) {
+              const words = name.split(" ");
+              if (articles.includes(words[0])) {
+                return words.shift(); // Remove the article from the band name
+              }
+              return "";
+            }
+          
+            // Extract the articles from each band name
+            const extractedArticles = bandNames.map(extractArticle);
+          
+            // Sort the remaining band names in lexicographical order
+            const sortedBandNames = bandNames.map(name => name.split(" ").slice(1).join("")).sort();
+          
+            // Concatenate the articles and sorted band names to form the output
+            const result = [];
+            for (let i = 0; i < bandNames.length; i++) {
+              result.push(extractedArticles[i] + (extractedArticles[i] ? " " : "") + sortedBandNames[i]);
+            }
+          
+            return result;
+          }
+          
+    </script>
+  
+    
+</body>
+</html>
